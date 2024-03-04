@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customized Tower of Hanoi</title>
+</head>
+<body>
+    <div id="steps"></div>
+    <div id="count"></div>
+    <script>
+        let count = 0;
+
+        function solveTowerOfHanoi(n, source, auxiliary, destination) {
+            if (n === 1) {
+                count++;
+                document.getElementById('steps').innerHTML += 'Move disk 1 from ' + source + ' to ' + destination + '<br>';
+                return;
+            }
+            solveTowerOfHanoi(n - 1, source, destination, auxiliary);
+            count++;
+            document.getElementById('steps').innerHTML += 'Move disk ' + n + ' from ' + source + ' to ' + destination + '<br>';
+            solveTowerOfHanoi(n - 1, auxiliary, source, destination);
+        }
+        
+        solveTowerOfHanoi(7, 'A', 'B', 'C');
+
+        document.getElementById('count').innerHTML = 'Total moves: ' + count;
+    </script>
+</body>
+</html>
