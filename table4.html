@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  color: red;
+  text-align: center;
+  background-image: url('your_background_image.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+th, td {
+  padding: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+}
+</style>
+<script>
+function submitForm() {
+  var studentId = document.getElementsByName("student_id")[0].value;
+  var name = document.getElementsByName("name")[0].value;
+  var value = document.getElementsByName("value")[0].value;
+  
+  document.getElementsByName("student_id")[0].readOnly = true;
+  document.getElementsByName("name")[0].readOnly = true;
+  document.getElementsByName("value")[0].readOnly = true;
+  
+  document.getElementById("submitMsg").innerText = "You have successfully registered!";
+}
+</script>
+</head>
+<body>
+
+<h1>Example of Form and Table</h1>
+
+<table border="1">
+  <caption>Application Form</caption>
+  <tr>
+    <th>Student ID</th>
+    <td><input type="text" name="student_id"></td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name"></td>
+  </tr>
+  <tr>
+    <th>Value</th>
+    <td><input type="text" name="value"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><button type="submit" onclick="submitForm()">Submit</button></td>
+  </tr>
+</table>
+
+<p id="submitMsg" style="text-align: center;"></p >
+
+</body>
+</html>
