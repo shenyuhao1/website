@@ -1,0 +1,40 @@
+.disk-shape {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #ffcc00;
+}
+
+.egg-shape {
+  width: 150px;
+  height: 200px;
+  border-radius: 50%/60% 60% 40% 40%;
+  background-color: #00ccff;
+}
+
+.heart-shape {
+  width: 100px;
+  height: 100px;
+  transform: rotate(-45deg);
+  background-color: #ff0000;
+}
+
+.heart-shape::before,
+.heart-shape::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px 50px 0 0;
+  background-color: #ff0000;
+}
+
+.heart-shape::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart-shape::after {
+  top: 0;
+  left: 50px;
+}
