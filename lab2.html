@@ -1,0 +1,52 @@
+<h1 style="color: blue;">  
+    <input checked="checked" name="option" type="radio" /> &nbsp; &nbsp; Student Information Form&nbsp; &nbsp;  
+</h1>  
+
+<table style="color: blue;">  
+    <tr>  
+        <td><strong><em>Student Id</em></strong></td>  
+        <td><input maxlength="13" name="student id" type="text" value="D10755556" /></td>  
+    </tr>  
+    <tr>  
+        <td><em><strong>Name</strong></em></td>  
+        <td><input name="Name" type="text" value="10755556" /></td>  
+    </tr>  
+    <tr>  
+        <td><strong>Gender</strong></td>  
+        <td>  
+            <input type="radio" name="gender" value="man" /> man &nbsp;  
+            <input type="radio" name="gender" value="woman" /> woman  
+        </td>  
+    </tr>  
+    <tr>  
+        <td><strong>Hobby</strong></td>  
+        <td>  
+            <input name="option" type="checkbox" />   
+            <input checked="checked" name="option" type="checkbox" />  
+            <input name="HOBBY" type="text" value="swimming" style="width: 100px;" />  
+            &nbsp;   
+            <input name="option" type="checkbox" />   
+            <input name="HOBBY" type="text" value="pingpang" style="width: 100px;" />  
+        </td>  
+    </tr>  
+    <tr>  
+        <td><strong>Major</strong></td>  
+        <td>  
+            <input name="major" type="text" />  
+        </td>  
+    </tr>  
+    <tr>  
+        <td><strong>From</strong></td>  
+        <td>  
+            <select id="fromSelect" name="from" onchange="updateCustomInput()">  
+                <option value="">选择城市</option>  
+                <option value="hangzhou">杭州</option>  
+                <option value="ningbo">宁波</option>  
+                <option value="custom">其他（请自定义）</option>  
+            </select>  
+        </td>  
+    </tr>  
+</table>  
+<p>  
+    <input type="submit" value="submit" />  
+</p>
