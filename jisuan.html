@@ -1,0 +1,46 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Quadratic Equation Solver</title>  
+    <script>  
+        function solveQuadratic() {  
+            // Get coefficients from user  
+            let a = prompt("Enter coefficient a:");  
+            let b = prompt("Enter coefficient b:");  
+            let c = prompt("Enter coefficient c:");  
+
+            // Convert coefficients to numbers  
+            a = parseFloat(a);  
+            b = parseFloat(b);  
+            c = parseFloat(c);  
+
+            // Compute delta  
+            let delta = b * b - 4 * a * c;  
+
+            // Check if delta is non-negative and a is positive  
+            if (delta >= 0 && a > 0) {  
+                // Compute the roots  
+                let x1 = (-b + Math.sqrt(delta)) / (2 * a);  
+                let x2 = (-b - Math.sqrt(delta)) / (2 * a);  
+
+                // Alert the user with the results  
+                alert("The solutions are:\n x1 = " + x1 + "\n x2 = " + x2);  
+
+                // Log the results to the console  
+                console.log("The solutions are:");  
+                console.log("x1 = " + x1);  
+                console.log("x2 = " + x2);  
+            } else {  
+                alert("No real solutions exist or 'a' must be greater than 0.");  
+                console.log("No real solutions exist or 'a' must be greater than 0.");  
+            }  
+        }  
+    </script>  
+</head>  
+<body>  
+    <h1>Quadratic Equation Solver</h1>  
+    <button onclick="solveQuadratic()">Solve Quadratic Equation</button>  
+</body>  
+</html>  
