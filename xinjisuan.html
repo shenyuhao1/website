@@ -1,0 +1,65 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Quadratic Equation Solver</title>  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            margin: 20px;  
+        }  
+        input {  
+            margin: 5px;  
+            width: 50px;  
+        }  
+        #solutionArea {  
+            margin-top: 20px;  
+        }  
+    </style>  
+    <script>  
+        function solveQuadratic() {  
+            // Get coefficients from user inputs  
+            let a = parseFloat(document.getElementById("coefA").value);  
+            let b = parseFloat(document.getElementById("coefB").value);  
+            let c = parseFloat(document.getElementById("coefC").value);  
+            let solutionArea = document.getElementById("solutionArea");  
+
+            // Compute delta  
+            let delta = b * b - 4 * a * c;  
+
+            // Check if 'a' is not zero  
+            if (a === 0) {  
+                solutionArea.innerHTML = "'a' must be greater than 0.";  
+                return;  
+            }  
+
+            // Handle different cases of delta  
+            if (delta > 0) {  
+                // Two distinct real solutions  
+                let x1 = (-b + Math.sqrt(delta)) / (2 * a);  
+                let x2 = (-b - Math.sqrt(delta)) / (2 * a);  
+                solutionArea.innerHTML = "The solutions are:<br>x1 = " + x1 + "<br>x2 = " + x2;  
+            } else if (delta === 0) {  
+                // One real solution  
+                let x = -b / (2 * a);  
+                solutionArea.innerHTML = "The solution is:<br>x = " + x;  
+            } else {  
+                // Complex solutions  
+                let realPart = (-b / (2 * a)).toFixed(2);  
+                let imaginaryPart = (Math.sqrt(-delta) / (2 * a)).toFixed(2);  
+                solutionArea.innerHTML = "The solutions are:<br>x1 = " + realPart + " + " + imaginaryPart + "i<br>x2 = " + realPart + " - " + imaginaryPart + "i";  
+            }  
+        }  
+    </script>  
+</head>  
+<body>  
+    <h1>Quadratic Equation Solver</h1>  
+    <input type="number" id="coefA" placeholder="a" step="any">x² +  
+    <input type="number" id="coefB" placeholder="b" step="any">x +  
+    <input type="number" id="coefC" placeholder="c" step="any"> = 0  
+    <button onclick="solveQuadratic()">Solve</button>  
+    
+    <div id="solutionArea"></div>  
+</body>  
+</html>  
