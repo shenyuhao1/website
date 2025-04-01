@@ -1,0 +1,87 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>JavaScript Array Operations Example</title>  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            margin: 20px;  
+            padding: 20px;  
+            border: 1px solid #ccc;  
+            border-radius: 5px;  
+            background-color: #f4f4f4;  
+        }  
+        button {  
+            margin: 5px;  
+            padding: 10px;  
+        }  
+        #output {  
+            margin-top: 20px;  
+            border: 1px solid #ccc;  
+            padding: 10px;  
+            border-radius: 5px;  
+            background-color: #fff;  
+        }  
+    </style>  
+</head>  
+<body>  
+
+    <h1>JavaScript Array Operations Example</h1>  
+    <div>  
+        <button onclick="addToTail()">Add 6 to Tail</button>  
+        <button onclick="removeFromTail()">Remove Element from Tail</button>  
+        <button onclick="removeFromMiddle()">Remove Elements from Middle</button>  
+        <button onclick="insertInMiddle()">Insert Element 4 in Middle</button>  
+        <button onclick="calculateEvenSum()">Calculate Sum of Even Numbers from 1 to 100</button>  
+    </div>  
+    
+    <h2>Array Operation Results</h2>  
+    <div id="output"></div>  
+
+    <script>  
+        // Initialize array  
+        let a = [1, 2, 3, 4, 5];  
+
+        function displayOutput(message) {  
+            const outputDiv = document.getElementById('output');  
+            outputDiv.innerHTML += message + '<br>';  
+        }  
+
+        function addToTail() {  
+            a.push(6);  
+            displayOutput("Added to Tail: " + a);  
+        }  
+
+        function removeFromTail() {  
+            let removedElement = a.pop();  
+            displayOutput("Removed Element from Tail: " + removedElement);  
+            displayOutput("Current Array: " + a);  
+        }  
+
+        function removeFromMiddle() {  
+            a.splice(2, 4); // Removes 4 elements starting from index 2  
+            displayOutput("Removed Elements from Middle: " + a);  
+        }  
+
+        function insertInMiddle() {  
+            a.splice(2, 0, 4); // Inserts 4 at index 2 without removing any elements  
+            displayOutput("Inserted Element in Middle: " + a);  
+        }  
+
+        function calculateEvenSum() {  
+            let s = 0;  
+            for (let i = 1; i <= 100; i++) {  
+                if (i % 2 === 1) { // Skip odd numbers  
+                    continue;  
+                }  
+                s += i; // Sum even numbers  
+            }  
+            displayOutput("Sum of Even Numbers from 1 to 100: " + s);  
+        }  
+    </script>  
+
+</body>  
+</html>  
+
