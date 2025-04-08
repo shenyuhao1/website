@@ -1,0 +1,92 @@
+<html><body>
+<input size=3 id=a>x<sup>2 </sup>+ <input size=3 id=b>x + <input id=c size=3> = 0
+<input type=button value=Solve onclick=solve()>
+<div id=solution>
+Solution area
+</div></body>
+<script>
+function solve()
+{
+    let a = document.getElementById('a');
+    let b = document.getElementById('b');
+    let c = document.getElementById('b');
+    let err = '';
+    if (isNaN(a.value))
+    {
+        err = 'a is not a number.';
+        a.focus();
+        err = 'b is not a number.';
+    b.focus();
+    alert('please enter a number');
+}
+else if (isNaN(c.value))
+{
+    err = 'c is not a number.';
+    c.focus();
+    alert('please enter a number');
+    }
+else
+{
+    a=parseFloat(a.value);
+    b=parseFloat(b.value);
+    c=parseFloat(c.value);
+    if (a === 0)
+    {
+       if(b === 0)
+       {
+           if (c === 0)
+           {
+               err = "any x solves the equation";
+           }
+           else
+          {
+              err='x=' +(-c/b);
+          }
+       }
+       else
+    {let delta = b**2 - 4*a*c;
+if (delta > 0)
+{
+    err ="x1=' + ((-b + Math.sqrt(delta))/2/a)
+        + "x2=" + ((-b - Math.sqrt(delta))/2/a);
+}
+else if (delta === 0)
+{
+    err = "x = " + (-b/2/a);
+}
+else
+{
+    err = "x1=" + (-b/2/a) + (Math.sqrt(-delta))/2/a) + 
+             " x2=" + (-b/2/a) - (Math.sqrt(-delta))/2/a) + "i";
+ }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          let area = document.getElementById('solution');
+// area.innerHTML = err;
+area.appendChild(document.createElement('pre'));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </script>
+object: any --> any type
+key --> value
+object is a collection of key-value pairs
+
+syntax:
+let x = {};
+let y = {a:1, b:2.5, c: 100}; // similar to CSS
+let z = {"a":1, "bz":2.5, "c":100};
+
+studentrecord.id = i;
+studentrecord.name = n;
+}
+studentrecord.register(1,"abc");
+studentrecord also can be viewed as a family name
+using family name is to promote software reusability
+by reducing the chance of name collision
+studentrecord.entries
+for loop:
+for (let key in studentrecord) // iteration/traversal/going through
+{
+console.log(studentrecord.key);
+console.log(studentrecord[key]);
+}
+for (let value of studentrecord) // iteration/traversal/going through
+{
+console.log(studentrecord.key);
+console.log(studentrecord[key]);
+}
