@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const colors = ['red', 'orange', 'yellow', 'green', 'black', 'blue', 'purple'];
+const burstAltitude = 150; // Y position where balloons burst
+const balloons = [];
+
+class Balloon {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height;
+        this.speed = Math.random() * 2 + 1;
+        this.baseSize = 30;
+        this.size = this.baseSize;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.burst = false;
+    }
+
+    update() {
+        if (!this.burst) {
+            this.y -= this.speed;
+            // Increase size based on altitude
+            this.size = this.baseSize + (canvas.height - this.y) * 0.1;
+            
+            // Check burst condition
+            if (this.y < burstAltitude) {
+                this.burst = true;
+                // Random delay for bursting
+                setTimeout(() => this.pop(), Math.random() * 1000);
+            }
+        }
+    }
+
+    pop() {
+        // Animate popping effect
+        const popInterval = setInterval(() => {
+            this.size += 2;
+            if (this.size > 60) clearInterval(popInterval);
+        }, 50);
+        
+        // Remove from array after animation
+        setTimeout(() => {
+            balloons.splice(balloons.indexOf(this), 1);
+        }, 300);
+    }
+
+    draw() {
+        if (!this.burst) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size/2, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
+            
+            // Draw string
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y + this.size/2);
+            ctx.lineTo(this.x, this.y + this.size/2 + 30);
+            ctx.stroke();
+        }
+    }
+}
+
+// Create new balloons periodically
+setInterval(() => {
+    if (balloons.length < 15) {
+        balloons.push(new Balloon());
+    }
+}, 2000);
+
+// Animation loop
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    balloons.forEach(balloon => {
+        balloon.update();
+        balloon.draw();
+    });
+    
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>
