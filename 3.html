@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>加载本地CSV文件</title>
+</head>
+<body>
+
+<input type="file" id="csvInput" accept=".csv" />
+
+<script>
+  const csvInput = document.getElementById('csvInput');
+
+  csvInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file && file.name.endsWith('.csv')) {
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        const content = e.target.result;
+        const rows = content.split('\n').filter(row => row.trim() !== '');
+        
+        // 创建表格元素
+        const table = document.createElement('table');
+        table.border = "1";
+        table.style.borderCollapse = "collapse";
+        table.style.marginTop = "10px";
+
+        rows.forEach((row, index) => {
+          const tr = document.createElement('tr');
+          const cells = row.split(',');
+
+          cells.forEach(cell => {
+            const td = document.createElement(index === 0 ? 'th' : 'td');
+            td.innerText = cell.trim();
+            tr.appendChild(td);
+          });
+          
+          table.appendChild(tr);
+        });
+
+        document.body.appendChild(table);
+      };
+
+      reader.readAsText(file);
+    } else {
+      alert('请上传一个CSV文件。');
+    }
+  });
+</script>
+
+</body>
+</html>

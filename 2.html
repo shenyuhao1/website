@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>加载本地HTML文件</title>
+</head>
+<body>
+
+<input type="file" id="fileInput" accept=".html" />
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+
+  fileInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file && file.name.endsWith('.html')) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        // 创建新的 div
+        const contentDiv = document.createElement('div');
+        // 设置显示内容
+        contentDiv.innerHTML = e.target.result;
+        // 样式调整（可选）
+        contentDiv.style.border = '1px solid #000';
+        contentDiv.style.padding = '10px';
+        contentDiv.style.marginTop = '10px';
+        // 添加到 body
+        document.body.appendChild(contentDiv);
+      };
+
+      reader.readAsText(file);
+    } else {
+      alert('请上传一个 HTML 文件。');
+    }
+  });
+</script>
+
+</body>
+</html>

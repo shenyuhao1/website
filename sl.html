@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>图片选择和显示</title>
+</head>
+<body>
+
+<input type="file" id="fileInput" accept="image/*" />
+<img id="imgDisplay" style="display:none; max-width: 100%; height: auto;" />
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const imgDisplay = document.getElementById('imgDisplay');
+
+  fileInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        imgDisplay.src = e.target.result;
+        imgDisplay.style.display = 'block';
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+
+</body>
+</html>

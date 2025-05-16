@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>点击报告坐标</title>
+<style>
+  #clickableDiv {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #333;
+  }
+  #report {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div id="clickableDiv">点击我查看坐标</div>
+<div id="report">点击位置坐标将显示在这里。</div>
+
+<script>
+  const div = document.getElementById('clickableDiv');
+  const reportDiv = document.getElementById('report');
+
+  div.addEventListener('click', function(e) {
+    const x = e.pageX;
+    const y = e.pageY;
+    reportDiv.innerText = `点击坐标： X = ${x}, Y = ${y}`;
+  });
+</script>
+
+</body>
+</html>
